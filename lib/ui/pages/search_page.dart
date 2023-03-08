@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/character_bloc.dart';
 import 'package:rick_and_morty/data/models/character.dart';
+import 'package:rick_and_morty/ui/widgets/custom_list_tile.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -103,14 +104,11 @@ class _SearchPageState extends State<SearchPage> {
       itemBuilder: (context, index) {
         final result = currentResults[index];
         return Padding(
-          padding: const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
-          child: ListTile(
-            title: Text(
-              result.name,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
-        );
+            padding:
+                const EdgeInsets.only(right: 16, left: 16, top: 3, bottom: 3),
+            child: CustomListTile(
+              result: result,
+            ));
       },
       separatorBuilder: (_, index) => const SizedBox(height: 5),
       shrinkWrap: true,
