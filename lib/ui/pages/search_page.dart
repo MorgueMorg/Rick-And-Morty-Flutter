@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -21,6 +23,8 @@ class _SearchPageState extends State<SearchPage> {
 
   final RefreshController refreshController = RefreshController();
   bool _isPagination = false;
+
+  Timer? searchDebounce;
 
   final _storage = HydratedBloc.storage;
 
@@ -69,9 +73,12 @@ class _SearchPageState extends State<SearchPage> {
               _currentResults = [];
               _currentSearchStr = value;
 
-              context.read<CharacterBloc>().add(
+              searchDebounce?.cancel();
+              searchDebounce = Timer(const Duration(microseconds: 500), () {
+                context.read<CharacterBloc>().add(
                     CharacterEvent.fetch(name: value, page: _currentPage),
                   );
+              });
             },
           ),
         ),
