@@ -45,6 +45,9 @@ dependencies:
   # For work with network
   http: ^0.13.5
 
+  # For local data source
+  shared_preferences: ^2.0.20
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
