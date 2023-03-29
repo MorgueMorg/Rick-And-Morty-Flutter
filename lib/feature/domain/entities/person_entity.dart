@@ -27,15 +27,27 @@ class PersonEntity extends Equatable {
     required this.episode,
     required this.created,
   });
-  
+
   @override
-  List<Object?> get props => [id, name, status, species, type, gender, origin, location, image, episode, created];
+  List<Object?> get props => [
+        id,
+        name,
+        status,
+        species,
+        type,
+        gender,
+        origin,
+        location,
+        image,
+        episode,
+        created
+      ];
 }
 
 // You can create another entity for location class, but i declared here
 class LocationEntity {
-  String? name;
-  String? url;
+  final String name;
+  final String url;
 
-  LocationEntity({this.name, this.url});
+  LocationEntity({required this.name, required this.url});
 }
