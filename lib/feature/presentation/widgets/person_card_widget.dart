@@ -46,7 +46,7 @@ class PersonCard extends StatelessWidget {
                     person.name,
                     style: const TextStyle(
                       fontSize: 20,
-                      color: Colors.white,
+                      color: Color(0xffff9800),
                       fontWeight: FontWeight.w700,
                     ),
                   ),
